@@ -1,0 +1,134 @@
+:root {
+  --progress-green-color: #28a745;
+}
+
+/* Progressbar */
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 0.5rem 0 4rem;
+  font-size: 16px;
+  color: #999999;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--progress-green-color);
+  width: 0%;
+  transition: 0.3s;
+}
+
+.progress-step {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #e0e0e0;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 14px;
+  color: #999999;
+
+}
+
+.progress-step-content {
+  position: absolute;
+  top: calc(100% + 2rem);
+  font-size: 10px;
+  color: #666;
+  width: 100px;
+  text-align: center;
+}
+
+.progress-step-active {
+  background:  var(--bs-primary);
+  border-color: var(--bs-primary) ;
+  color: #fff;
+}
+
+.progress-step-active::after {
+  content: attr(data-title);
+  color: var(--bs-primary);
+  font-weight: 600;
+}
+
+.progress-step-completed {
+  background:  var(--progress-green-color);
+  border-color: var(--progress-green-color) ;
+  color: #fff;
+}
+
+.progress-step-completed::after {
+  content: attr(data-title);
+  color: var(--progress-green-color);
+  font-weight: 600;
+}
+
+.progress-step-completed::before {
+  font-family: "bootstrap-icons";
+  content: "\f26e"; /* Unicode for bi-check */
+  font-size: 26px;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+
+/* Tab */
+.tab-content {
+  margin-bottom: 30px;
+  border: 1px solid #dee2e6;
+  border-top: none;
+  margin-top: -1px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  z-index: -1;
+}
+
+.nav-tabs .nav-item .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: #f8f9fa;
+  margin-bottom: -1px;
+  transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link.active {
+  color: #0d6efd;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff; 
+  z-index: 2; 
+  position: relative;   
+}
+
+.nav-item .nav-link {
+  height: 100%;
+}
