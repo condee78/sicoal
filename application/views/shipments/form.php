@@ -682,34 +682,39 @@ Swal.fire({
             <input type="datetime-local" name="dt_ba_bm" class="form-control" value="<?= set_value('dt_ba_bm', isset($data['dt_ba_bm'])?date('Y-m-d\TH:i',strtotime($data['dt_ba_bm'])):'') ?>">
 
           </div>
-          
-                <div class="col-3 col-md-3">
-
-                    <label class="form-label">Quality Calori</label>
-
+            <div class="col-6 col-md-3">
+                <label class="form-label">Quality Calorie</label>
+                <div class="input-group">
                     <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_cal',$data['quolity_cal']??'') ?>">
+                    <span class="input-group-text">cal</span>
+                </div>
+            </div>
 
+                <div class="col-6 col-md-3">
+
+                  <label class="form-label">Quality Sulfur</label>
+                  <div class="input-group">
+                    <input name="status_coal_supplier" id="caloriInput" class="form-control" value="<?= set_value('quolity_sul',$data['quolity_sul']??'') ?>">
+                      <div class="input-group-text">%</div>
                   </div>
-                   <div class="col-3 col-md-3">
+                </div>
 
-                    <label class="form-label">Quality Sulfur</label>
-
-                    <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_sul',$data['quolity_sul']??'') ?>">
-
-                  </div>
-                   <div class="col-3 col-md-3">
+                   <div class="col-6 col-md-3">
 
                     <label class="form-label">Quality Ash</label>
-
+                    <div class="input-group">
                     <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_ash',$data['quolity_ash']??'') ?>">
+                      <div class="input-group-text">%</div>
+                    </div>
 
                   </div>
-                   <div class="col-3 col-md-3">
+                   <div class="col-6 col-md-3">
 
-                    <label class="form-label">Quality Moistore</label>
-
+                    <label class="form-label">Quality Moisture</label>
+                    <div class="input-group">
                     <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_moi',$data['quolity_moi']??'') ?>">
-
+                      <div class="input-group-text">Celsius</div>
+                    </div>
                   </div>
 
 
