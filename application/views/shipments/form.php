@@ -685,8 +685,8 @@ Swal.fire({
             <div class="col-6 col-md-3">
                 <label class="form-label">Quality Calorie</label>
                 <div class="input-group">
-                    <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_cal',$data['quolity_cal']??'') ?>">
-                    <span class="input-group-text">cal</span>
+                    <input name="quality_cal" class="form-control" value="<?= set_value('quality_cal',$data['quality_cal']??'') ?>">
+                    <span class="input-group-text">kCal/kg</span>
                 </div>
             </div>
 
@@ -694,7 +694,7 @@ Swal.fire({
 
                   <label class="form-label">Quality Sulfur</label>
                   <div class="input-group">
-                    <input name="status_coal_supplier" id="caloriInput" class="form-control" value="<?= set_value('quolity_sul',$data['quolity_sul']??'') ?>">
+                    <input name="quality_sul" class="form-control" value="<?= set_value('quality_sul',$data['quality_sul']??'') ?>">
                       <div class="input-group-text">%</div>
                   </div>
                 </div>
@@ -703,7 +703,7 @@ Swal.fire({
 
                     <label class="form-label">Quality Ash</label>
                     <div class="input-group">
-                    <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_ash',$data['quolity_ash']??'') ?>">
+                    <input name="quality_ash" class="form-control" value="<?= set_value('quality_ash',$data['quality_ash']??'') ?>">
                       <div class="input-group-text">%</div>
                     </div>
 
@@ -712,8 +712,8 @@ Swal.fire({
 
                     <label class="form-label">Quality Moisture</label>
                     <div class="input-group">
-                    <input name="status_coal_supplier" class="form-control" value="<?= set_value('quolity_moi',$data['quolity_moi']??'') ?>">
-                      <div class="input-group-text">Celsius</div>
+                    <input name="quality_moi" class="form-control" value="<?= set_value('quality_moi',$data['quality_moi']??'') ?>">
+                      <div class="input-group-text">%</div>
                     </div>
                   </div>
 

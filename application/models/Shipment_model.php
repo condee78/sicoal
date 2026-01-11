@@ -249,7 +249,7 @@ $this->load->model('Notification_model','notif');
                   'dt_ba_bm','dt_coa_received','dt_sample_received',
                   'dt_inv_delivery_soft','dt_inv_delivery_hard','dt_inv_received',
                   'dt_payment','status_coal_supplier','shipment_status','dt_disch_port',
-                  'remarks_aj','dt_sample_request','dt_sample_received2','dt_coa_delivery'];
+                  'remarks_aj','dt_sample_request','dt_sample_received2','dt_coa_delivery','quality_cal','quality_ash','quality_sul','quality_moi'];
     }
 
     $data = array_intersect_key($payload, array_flip($allowed));

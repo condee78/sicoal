@@ -88,7 +88,7 @@
           <?php endforeach; ?>
         </select>
       </div>
-      <div class="col-6 col-lg-2">
+      <!--<div class="col-6 col-lg-2">
         <label class="form-label small">Status</label>
         <select name="shipment_status" class="form-select">
           <option value="">Semua</option>
@@ -96,7 +96,7 @@
             <option <?= (($filter['shipment_status']??'')==$st)?'selected':'' ?>><?= $st ?></option>
           <?php endforeach; ?>
         </select>
-      </div>
+      </div>!-->
       <div class="col-6 col-lg-2">
         <label class="form-label small">Bucket</label>
         <select name="bucket" class="form-select">
