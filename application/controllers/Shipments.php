@@ -223,6 +223,26 @@ $status['last_completed_label']
     $this->load->view('shipments/detail',$data); // buat view sederhana jika diperlukan
   }
   
+  public function map_vessel($shipmentId)
+{
+    $shipmentId = (int)$shipmentId;
+
+    $this->load->model('Shipments_model', 'shipments');
+    $vesselId = $this->shipments->map_nominated_vessel($shipmentId);
+
+    // balik ke halaman sebelumnya
+    $ref = $this->input->server('HTTP_REFERER');
+    if ($vesselId) {
+        // kalau sukses, langsung buka peta vessel
+        redirect('vessels/detail/'.$vesselId);
+        return;
+    }
+
+    // kalau gagal mapping, arahkan ke master vessel search
+    // (biar admin bisa tambah/isi MMSI)
+    redirect('admin_vessels?q='.urlencode(''.$this->db->get_where('shipments',['id'=>$shipmentId],1)->row('nominated_vessel')));
+}
+
   
   // application/controllers/Shipments.php
 public function check_unique(){

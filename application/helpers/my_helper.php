@@ -22,6 +22,82 @@ function RandomString($length = 10) {
 
 
 
+function vf_utc_to_mysql($s)
+
+{
+
+    if (empty($s)) return null;
+
+    $s = trim($s);
+
+
+
+    // contoh: "2026-01-14 05:57:14 UTC"
+
+    $s = str_replace(' UTC', ' +0000', $s);
+
+
+
+    $ts = strtotime($s);
+
+    if (!$ts) return null;
+
+
+
+    // simpan sebagai DATETIME UTC (server time bebas, tapi konsisten)
+
+    return gmdate('Y-m-d H:i:s', $ts);
+
+}
+
+function vessel_name_norm($name)
+
+{
+
+    $name = strtoupper(trim($name));
+
+    // hapus tanda baca umum
+
+    $name = preg_replace('/[^\w\s]/', ' ', $name);
+
+    // rapikan spasi
+
+    $name = preg_replace('/\s+/', ' ', $name);
+
+
+
+    // normalisasi prefix yang sering beda penulisan (opsional)
+
+    $repl = [
+
+        ' TB ' => ' TB ',
+
+        ' T/B '=> ' TB ',
+
+        'MV' => '',
+
+        'MV.' => '',
+
+        ' MT ' => ' MT ',
+
+        ' BG ' => ' BG ',
+
+        ' BARGE ' => ' BG ',
+
+    ];
+
+    $name = ' '.$name.' ';
+
+    foreach ($repl as $k => $v) $name = str_replace($k, $v, $name);
+
+   echo'<hr>'. $name = trim(preg_replace('/\s+/', ' ', $name));
+
+
+
+    return $name;
+
+}
+
 
 
 

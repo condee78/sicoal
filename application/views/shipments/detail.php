@@ -95,6 +95,21 @@
       </a>
 
     <?php endif; ?>
+<a class="btn btn-xs btn-info"
+     href="<?=site_url('vessels/detail/'.(int)$data['vessel_id'])?>">
+     Lihat di Peta
+  </a>
+<?php if(!empty($data['vessel_id'])): ?>
+  <a class="btn btn-xs btn-info"
+     href="<?=site_url('vessels/detail/'.(int)$data['vessel_id'])?>">
+     Lihat di Peta
+  </a>
+<?php else: ?>
+  <a class="btn btn-xs btn-warning"
+     href="<?=site_url('shipments/map_vessel/'.(int)$data['id'])?>">
+     Mapping Vessel
+  </a>
+<?php endif; ?>
 
     <span class="badge <?= ($data['shipment_status']=='Completed'?'bg-success':($data['shipment_status']=='On process'?'bg-warning text-dark':'bg-secondary')) ?>">
 
@@ -109,6 +124,8 @@
 
 
       <div class="card-body">
+
+
 
         <div class="row g-2">
 

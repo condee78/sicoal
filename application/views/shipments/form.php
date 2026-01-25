@@ -925,6 +925,12 @@ Swal.fire({
 
               ['label'=>'BA Bongkar Muat (W$)','val'=>$data['dt_ba_bm']],
 
+              /*
+              ['label'=>'Quality Calorie (kCal/kg)','val'=>$data['quality_cal']],
+              ['label'=>'Quailty Sulfur (%)','val'=>$data['quality_sul']],
+              ['label'=>'Quality Ash (%)','val'=>$data['quality_ash']],
+              ['label'=>'Quality Moisture','val'=>$data['quality_moi']],
+              */
               ['label'=>'Inv Softcopy (AC$)','val'=>$data['dt_inv_delivery_soft']],
 
               ['label'=>'Inv Hardcopy (AD$)','val'=>$data['dt_inv_delivery_hard']],
@@ -954,7 +960,7 @@ Swal.fire({
 
               <div class="fw-semibold">
 
-                <?= $t['val'] ? tgl_time($t['val']) : '-' ?>
+                <?= $t['val'] ? tgl_time($t['val']) : '-' ?>                
 
               </div>
 

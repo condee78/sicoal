@@ -638,5 +638,58 @@ public function period_summary(string $date_from, string $date_to): array
 }
 
 
+// mapping 1 shipment
+    public function map_nominated_vessel($shipmentId)
+    {
+        $s = $this->db->get_where('shipments', ['id'=>(int)$shipmentId], 1)->row_array();
+        if (!$s) return false;
+
+        $name = trim((string)($s['nominated_vessel'] ?? ''));
+        if ($name === '') return false;
+
+        $norm = vessel_name_norm($name);
+
+        // cari di master vessel
+        $v = $this->db->get_where('vessels', ['name_norm'=>$norm], 1)->row_array();
+        if (!$v) return false;
+
+        $this->db->where('id', (int)$shipmentId)->update('shipments', [
+            'nominated_vessel_id' => (int)$v['id']
+        ]);
+
+        return (int)$v['id'];
+    }
+
+    // mapping massal (buat cron / tombol admin)
+    public function map_all_nominated_vessels($limit=500)
+    {
+
+        $rows = $this->db->query("
+            SELECT id, nominated_vessel
+            FROM shipments
+            WHERE (nominated_vessel_id IS NULL OR nominated_vessel_id=0)
+              AND nominated_vessel IS NOT NULL AND nominated_vessel <> ''
+            ORDER BY id DESC
+            LIMIT ?
+        ", [(int)$limit])->result_array();
+
+        $mapped = 0;
+
+        foreach ($rows as $r) {
+            $norm = vessel_name_norm($r['nominated_vessel']);
+            $v = $this->db->get_where('vessels', ['name_norm'=>$norm], 1)->row_array();
+            if (!$v) continue;
+
+            $this->db->where('id', (int)$r['id'])->update('shipments', [
+                'nominated_vessel_id' => (int)$v['id']
+            ]);
+            $mapped++;
+        }
+
+        return $mapped;
+    }
+    
+
+
 
 }
